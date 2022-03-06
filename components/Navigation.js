@@ -13,7 +13,7 @@ export default function Navigation() {
         <div>
           <ul className="flex list-[none] space-x-2">
             <li>
-              <Link href="recipes">
+              <Link href="/recipes">
                 <a>Recipes</a>
               </Link>
             </li>

@@ -1,14 +1,31 @@
-export default function index() {
+import Link from 'next/link';
+import { getAllRecipes } from '../../lib/dbUtil';
+
+export default function allRecipes({ recipes }) {
   return (
-    <div className="text-green-600 flex">
-      index
-      <h1 className="font-bold underline p-10 text-blue-600">Some text</h1>
-      <h3 className="text-red-600 underline font-bold p-10 m-10">
-        Test with padding
-      </h3>
-      <h2 className="text-lg-3"> and more text</h2>
-      <h2>Another test title</h2>
-      <h2>Another test title</h2>
+    <div>
+      <h1 className=" flex justify-center">All Recipes Page</h1>
+
+      <ul>
+        {recipes.map((recipe) => (
+          <li key={recipe.id}>
+            <Link href={`/recipes/${recipe.id.toString()}`}>
+              <a>{recipe.title}</a>
+            </Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const recipes = await getAllRecipes();
+
+  return {
+    props: {
+      recipes: recipes,
+      revalidate: 300,
+    },
+  };
 }
