@@ -9,10 +9,23 @@ export default function SingleRecipe({
 }) {
   return (
     <div>
-      <h1>{title}</h1>
-      <p>{parse(ingredients)}</p>
-      <p>{parse(directions)}</p>
-      <p>{parse(notes)}</p>
+      <h1 className="flex justify-center font-bold text-4xl my-10">{title}</h1>
+      <div className="flex">
+        <div className="bg-white inline-block mx-8 p-5 border border-black">
+          <h1 className="text-2xl">Ingredients</h1>
+          <p className="my-4">{parse(ingredients)}</p>
+        </div>
+        <div className="px-2 block">
+          <div className="bg-white border border-black p-5">
+            <h1 className="text-2xl">Directions</h1>
+            <p className="my-4">{parse(directions)}</p>
+          </div>
+        </div>
+      </div>
+      <div className="my-4 bg-white ml-8 p-5 border border-black">
+        <h1 className="text-2xl">Notes:</h1>
+        <p className="my-4">{parse(notes)}</p>
+      </div>
     </div>
   );
 }

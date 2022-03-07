@@ -9,4 +9,11 @@ ul {
 
 ol {
   @apply list-decimal;
+  /* @apply list-inside; */
+}
+
+@layer base {
+  body {
+    @apply bg-slate-200;
+  }
 }
