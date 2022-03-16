@@ -1,0 +1,40 @@
+Accounts
+* If user logged in can change password.. But how to verify login. 
+** Will need to manually change password to plain text briefly
+* Delete other accounts - leave just mine
+
+
+Recipes
+* Delete recipes that are not from #1
+
+ - Formatting
+ * Install a rich text editor - Draft probably?
+ @(Can look at moving to content management after)
+
+
+
+
+
+
+Database
+@Store text as html through text editor, parse it with react parse
+
+
+
+Set up next auth
+
+Set up schema in schema.prisma to match next auth
+
+@Keep id as int for now
+
+Add search but not updating per key stroke
+
+
+install Bcrypt
+
+
+
+
+
+Add dark mode
+

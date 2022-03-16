@@ -1,6 +1,10 @@
 import Head from 'next/head';
+import AuthForm from '../components/auth/AuthForm';
+import { getSession, useSession } from 'next-auth/react';
 
 export default function Home() {
+  const { data: session } = useSession();
+
   return (
     <div>
       <Head>
@@ -11,20 +15,9 @@ export default function Home() {
 
       <main>
         <h1 className="text-3xl text-blue-600">Recipe Haven 3 Home</h1>
-        <ul className="mx-10">
-          <li>Stuff</li>
-          <li>More Stuff</li>
-          <li>More Stuff</li>
-          <li>More Stuff</li>
-          <li>More Stuff</li>
-        </ul>
-        <ol className="mx-10">
-          <li>number stuff</li>
-          <li>number stuff</li>
-          <li>number stuff</li>
-          <li>number stuff</li>
-          <li>number stuff</li>
-        </ol>
+
+        <AuthForm />
+        {session ? `Signed is as ${session.user.email}` : 'nope'}
       </main>
 
       <footer></footer>
