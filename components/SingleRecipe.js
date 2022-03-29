@@ -26,6 +26,10 @@ export default function SingleRecipe({
         <h1 className="text-2xl">Notes:</h1>
         <p className="my-4">{parse(notes)}</p>
       </div>
+      <div className="mx-8">
+        <button className="px-6 bg-blue-600 mr-4">Edit</button>
+        <button className="bg-red-600 px-6">Delete</button>
+      </div>
     </div>
   );
 }
