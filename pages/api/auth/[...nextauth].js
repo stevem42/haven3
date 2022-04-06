@@ -34,10 +34,28 @@ export default NextAuth({
           throw new Error('Could not log you in');
         }
 
-        return {
-          email: user.email,
-        };
+        return user;
+
+        // return {
+        //   email: user.email,
+        //   user_id: user.id,
+        // };
       },
     }),
   ],
+  callbacks: {
+    async jwt({ token, account, user }) {
+      console.log(token, account);
+      if (user) {
+        token.accessToken = account.access_token;
+      }
+      return token;
+    },
+    async session({ session, token, user }) {
+      session.accessToken = token.accessToken;
+      session.user.userId = parseInt(token.sub);
+      return session;
+    },
+  },
+  secret: process.env.NEXTAUTH_SECRET,
 });

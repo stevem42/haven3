@@ -2,12 +2,15 @@ import SingleRecipe from '../../components/SingleRecipe';
 import { getAllRecipes, getRecipeById } from '../../lib/dbUtil';
 
 export default function individualRecipe({ recipe }) {
+  console.log('RECIPE', recipe);
   return (
     <SingleRecipe
       title={recipe.title}
       ingredients={recipe.ingredients}
       directions={recipe.directions}
       notes={recipe.notes}
+      user_id={recipe.user_id}
+      recipeId={recipe.id}
     />
   );
 }

@@ -27,7 +27,6 @@ Set up schema in schema.prisma to match next auth
 
 @Keep id as int for now
 
-Add search but not updating per key stroke
 
 
 install Bcrypt
@@ -36,5 +35,30 @@ install Bcrypt
 
 
 
-Add dark mode
 
+
+Individual Recipe
+
+Show page for anyone
+Show edit and delete for creator only
+
+
+
+
+TODO
+Add Modal for delete recipe
+Add toast notification for create, edit and delete
+
+
+
+
+Change home page to be some recent recipes
+Move home page auth form to sign in / sign up page
+Add dark mode
+Add search but not updating per key stroke
+
+Modify navbar to be responsive - mobile view
+
+change elevated password - give admin access
+
+Style .. everything

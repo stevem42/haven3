@@ -1,12 +1,42 @@
-import React from 'react';
+import { useState } from 'react';
 import parse from 'html-react-parser';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
+import Modal from './Modal';
 
 export default function SingleRecipe({
   title,
   ingredients,
   directions,
   notes,
+  user_id,
+  recipeId,
 }) {
+  const [showModal, setShowModal] = useState(false);
+
+  const openModal = () => {
+    setShowModal((prev) => !prev);
+  };
+
+  const router = useRouter();
+
+  const handleDelete = async () => {
+    const res = await fetch('http://localhost:3000/api/recipes/delete', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ recipeId: recipeId, userId: user_id }),
+    });
+    const data = await res.json();
+    console.log(data);
+    router.push('/recipes');
+  };
+
+  const { data: session } = useSession();
+
+  console.log(session);
+
   return (
     <div>
       <h1 className="flex justify-center font-bold text-4xl my-10">{title}</h1>
@@ -26,10 +56,23 @@ export default function SingleRecipe({
         <h1 className="text-2xl">Notes:</h1>
         <p className="my-4">{parse(notes)}</p>
       </div>
-      <div className="mx-8">
-        <button className="px-6 bg-blue-600 mr-4">Edit</button>
-        <button className="bg-red-600 px-6">Delete</button>
-      </div>
+
+      {session && session.user.userId === user_id && (
+        <div className="mx-8">
+          <button className="px-6 bg-blue-600 mr-4">Edit</button>
+          <button
+            className="bg-red-600 hover:bg-red-700 font-bold py-2 px-4 border border-red-700 rounded"
+            onClick={openModal}
+          >
+            Delete
+          </button>
+          <Modal
+            showModal={showModal}
+            setShowModal={openModal}
+            handleDelete={handleDelete}
+          />
+        </div>
+      )}
     </div>
   );
 }

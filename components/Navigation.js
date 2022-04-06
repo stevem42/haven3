@@ -23,9 +23,14 @@ export default function Navigation() {
                 <a>All Recipes</a>
               </Link>
             </li>
+            <li>
+              <Link href="/recipes/add">
+                <a>New Recipe</a>
+              </Link>
+            </li>
             {!session ? (
               <li>
-                <Link href="/login">
+                <Link href="/">
                   <a>Login</a>
                 </Link>
               </li>
