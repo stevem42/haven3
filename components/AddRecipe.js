@@ -46,7 +46,7 @@ export default function AddRecipe({ user }) {
     <>
       <form onSubmit={handleSubmit}>
         <h1 className="text-center text-2xl">Add A New Recipe</h1>
-        <div className="w-80">
+        <div className="w-80 flex flex-col">
           <label htmlFor="title">Title</label>
           <input
             type="text"
@@ -65,12 +65,14 @@ export default function AddRecipe({ user }) {
             id="notes"
             value={values.notes}
             onChange={handleInputChange}
+            className="my-5"
           />
-          <input
+          <button
             type="submit"
-            value="Add Recipe"
-            className="bg-green-500 px-2"
-          />
+            className="bg-purple-400 hover:bg-purple-600 font-bold py-2 px-4 border border-purple-600 rounded"
+          >
+            Add Recipe
+          </button>
         </div>
       </form>
       <hr />
