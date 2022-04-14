@@ -1,8 +1,15 @@
 import SingleRecipe from '../../components/SingleRecipe';
 import { getAllRecipes, getRecipeById } from '../../lib/dbUtil';
+import { useRouter } from 'next/router';
 
-export default function individualRecipe({ recipe }) {
+export default function IndividualRecipe({ recipe }) {
   console.log('RECIPE', recipe);
+
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <SingleRecipe
