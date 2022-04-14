@@ -3,6 +3,7 @@ import parse from 'html-react-parser';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import Modal from './Modal';
+import { API_URL } from '../lib/config';
 
 export default function SingleRecipe({
   title,
@@ -21,7 +22,7 @@ export default function SingleRecipe({
   const router = useRouter();
 
   const handleDelete = async () => {
-    const res = await fetch('http://localhost:3000/api/recipes/delete', {
+    const res = await fetch(`${API_URL}/api/recipes/delete`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',

@@ -5,6 +5,8 @@ import IngredientText from './Text/IngredientText';
 import parse from 'html-react-parser';
 import { useRouter } from 'next/router';
 
+import { API_URL } from '../lib/config';
+
 export default function AddRecipe({ user }) {
   const router = useRouter();
   console.log(user);
@@ -28,7 +30,7 @@ export default function AddRecipe({ user }) {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    const res = await fetch('http://localhost:3000/api/recipes/new', {
+    const res = await fetch(`${API_URL}/api/recipes/new`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

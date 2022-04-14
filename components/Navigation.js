@@ -6,7 +6,7 @@ export default function Navigation() {
   const { data: session } = useSession();
 
   function handleSignOut() {
-    signOut({ callbackUrl: 'http://localhost:3000' });
+    signOut({ callbackUrl: '/' });
   }
   return (
     <header className="bg-purple-400 py-4 mb-2">

@@ -48,6 +48,7 @@ Show edit and delete for creator only
 TODO
 Add Modal for delete recipe
 Add toast notification for create, edit and delete
+Add meal planning functionality
 
 
 
