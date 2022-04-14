@@ -1,7 +1,7 @@
 import { getSession } from 'next-auth/react';
 import prisma from '../../../lib/prisma';
 
-export default async (req, res) => {
+export default async function handler(req, res) {
   const session = await getSession({ req });
 
   if (session && session.user.userId === req.body.userId) {
@@ -15,4 +15,4 @@ export default async (req, res) => {
 
     res.status(200).json({ message: 'DELETED IT' });
   }
-};
+}

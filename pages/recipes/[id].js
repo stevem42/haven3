@@ -4,13 +4,6 @@ import { getAllRecipes, getRecipeById } from '../../lib/dbUtil';
 export default function individualRecipe({ recipe }) {
   console.log('RECIPE', recipe);
 
-  if (!recipe) {
-    return (
-      <div>
-        <p>LOADING</p>
-      </div>
-    );
-  }
   return (
     <SingleRecipe
       title={recipe.title}
@@ -44,6 +37,6 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: 'blocking',
+    fallback: 'false',
   };
 }
