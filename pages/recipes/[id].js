@@ -23,6 +23,7 @@ export async function getStaticProps(context) {
     props: {
       recipe,
     },
+    revalidate: 1,
   };
 }
 
