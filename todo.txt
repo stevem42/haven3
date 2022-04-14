@@ -46,6 +46,13 @@ Show edit and delete for creator only
 
 
 TODO
+
+
+**** CHANGE AND DELETE .env
+Figure out deployment variables
+
+
+
 Add Modal for delete recipe
 Add toast notification for create, edit and delete
 Add meal planning functionality
