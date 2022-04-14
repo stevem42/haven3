@@ -30,17 +30,23 @@ export default function AddRecipe({ user }) {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    const res = await fetch(`${API_URL}/api/recipes/new`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(values),
-    });
+    try {
+      const res = await fetch(`${API_URL}/api/recipes/new`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      });
 
-    if (res.status === 201) {
-      const data = await res.json();
-      router.push(`/recipes/${data.id.toString()}`);
+      if (res.ok) {
+        const data = await res.json();
+        router.push(`/recipes/${data.id.toString()}`);
+      } else {
+        console.log('something went wrong add rec');
+      }
+    } catch (error) {
+      console.log(error);
     }
   }
 
