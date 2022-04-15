@@ -28,7 +28,7 @@ export default function AddRecipe({ user }) {
   };
 
   async function handleSubmit(e) {
-    e.preventDefault();
+    e.preventDefault(); //
 
     try {
       const res = await fetch(`${API_URL}/api/recipes/new`, {
