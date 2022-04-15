@@ -3,8 +3,6 @@ import { getAllRecipes, getRecipeById } from '../../lib/dbUtil';
 import { useRouter } from 'next/router';
 
 export default function IndividualRecipe({ recipe }) {
-  console.log('RECIPE', recipe);
-
   const router = useRouter();
 
   if (router.isFallback) {
