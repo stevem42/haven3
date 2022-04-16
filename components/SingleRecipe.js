@@ -36,7 +36,7 @@ export default function SingleRecipe({
 
   const { data: session } = useSession();
 
-  console.log(session);
+  // console.log(session);
 
   return (
     <div>
