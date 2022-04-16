@@ -22,7 +22,7 @@ export default function allRecipes({ recipes }) {
       <div className="flex-col">
         {recipes.map((recipe) => (
           <div key={recipe.id}>
-            <Link href={`/recipes/${recipe.id.toString()}`}>
+            <Link href={`/recipes/${recipe.id.toString()}`} prefetch={false}>
               <a className="bg-white block border-2 border-black flex-col inline-block px-10 my-2">
                 {recipe.title}
               </a>
