@@ -4,9 +4,9 @@ import { getAllRecipes, getRecipeById } from '../../lib/dbUtil';
 import { useRouter } from 'next/router';
 
 export default function IndividualRecipe({ recipe }) {
-  const refreshPage = () => {
-    window.location.reload(true);
-  };
+  // const refreshPage = () => {
+  //   window.location.reload(true);
+  // };
 
   const router = useRouter();
 
@@ -22,6 +22,11 @@ export default function IndividualRecipe({ recipe }) {
     return <p>Loading...</p>;
   }
 
+  if (router.query.updated === 'true') {
+    console.log('reloading');
+    window.location.reload();
+  }
+
   return (
     <>
       <SingleRecipe
@@ -33,7 +38,7 @@ export default function IndividualRecipe({ recipe }) {
         recipeId={recipe.id}
       />
 
-      <button onClick={refreshPage}>Refresh Data</button>
+      {/* <button onClick={refreshPage}>Refresh Data</button> */}
     </>
   );
 }
