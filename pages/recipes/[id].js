@@ -1,15 +1,20 @@
 import SingleRecipe from '../../components/SingleRecipe';
+import { useEffect } from 'react';
 import { getAllRecipes, getRecipeById } from '../../lib/dbUtil';
 import { useRouter } from 'next/router';
 
 export default function IndividualRecipe({ recipe }) {
   const router = useRouter();
 
+  useEffect(() => {
+    if (router.query.updated === 'true') {
+      router.reload();
+    }
+  }, []);
+
   if (router.isFallback) {
     return <p>Loading...</p>;
   }
-
-  router.reload();
 
   return (
     <SingleRecipe

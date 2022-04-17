@@ -50,7 +50,7 @@ export default function EditRecipe({ recipe }) {
       if (res.ok) {
         revalidate(values.recipeId);
         const data = await res.json();
-        router.push(`/recipes/${data.id.toString()}`);
+        router.push(`/recipes/${data.id.toString()}?updated=true`);
       } else {
         console.log('something went wrong edit recipe');
       }
