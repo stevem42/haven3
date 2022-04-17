@@ -9,6 +9,8 @@ export default function IndividualRecipe({ recipe }) {
     return <p>Loading...</p>;
   }
 
+  router.reload();
+
   return (
     <SingleRecipe
       title={recipe.title}
