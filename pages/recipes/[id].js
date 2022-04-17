@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { getAllRecipes, getRecipeById } from '../../lib/dbUtil';
 import { useRouter } from 'next/router';
 
-export default function IndividualRecipe({ recipe }) {
+export default function IndividualRecipe({ recipe, recipeId }) {
   // const refreshPage = () => {
   //   window.location.reload(true);
   // };
@@ -23,8 +23,7 @@ export default function IndividualRecipe({ recipe }) {
   }
 
   if (router.query.updated === 'true') {
-    console.log('reloading');
-    window.location.reload();
+    router.push(`/recipes/${recipeId}`);
   }
 
   return (
@@ -50,6 +49,7 @@ export async function getStaticProps(context) {
   return {
     props: {
       recipe,
+      recipeId,
     },
   };
 }
