@@ -4,29 +4,37 @@ import { getAllRecipes, getRecipeById } from '../../lib/dbUtil';
 import { useRouter } from 'next/router';
 
 export default function IndividualRecipe({ recipe }) {
+  const refreshPage = () => {
+    window.location.reload(true);
+  };
+
   const router = useRouter();
 
-  useEffect(() => {
-    if (router.query.updated === 'true') {
-      window.onload = () => {
-        window.location.reload(true);
-      };
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (router.query.updated === 'true') {
+  //     window.onload = () => {
+  //       window.location.reload(true);
+  //     };
+  //   }
+  // }, []);
 
   if (router.isFallback) {
     return <p>Loading...</p>;
   }
 
   return (
-    <SingleRecipe
-      title={recipe.title}
-      ingredients={recipe.ingredients}
-      directions={recipe.directions}
-      notes={recipe.notes}
-      user_id={recipe.user_id}
-      recipeId={recipe.id}
-    />
+    <>
+      <SingleRecipe
+        title={recipe.title}
+        ingredients={recipe.ingredients}
+        directions={recipe.directions}
+        notes={recipe.notes}
+        user_id={recipe.user_id}
+        recipeId={recipe.id}
+      />
+
+      <button onClick={refreshPage}>Refresh Data</button>
+    </>
   );
 }
 
