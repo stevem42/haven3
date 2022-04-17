@@ -8,9 +8,9 @@ export default function IndividualRecipe({ recipe }) {
 
   useEffect(() => {
     if (router.query.updated === 'true') {
-      let timer1 = setTimeout(() => window.location.reload(true), 4000);
-      console.log('timout run');
-      return clearTimeout(timer1);
+      window.onload = () => {
+        window.location.reload(true);
+      };
     }
   }, []);
 
