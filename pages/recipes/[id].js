@@ -8,7 +8,8 @@ export default function IndividualRecipe({ recipe }) {
 
   useEffect(() => {
     if (router.query.updated === 'true') {
-      router.reload();
+      let timer1 = setTimeout(() => router.reload(), 4000);
+      return clearTimeout(timer1);
     }
   }, []);
 
