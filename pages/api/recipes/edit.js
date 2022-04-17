@@ -14,7 +14,6 @@ async function handler(req, res) {
       data: {
         course: 'dinner',
         title: title,
-        date_posted: date,
         ingredients,
         directions,
         notes,

@@ -10,6 +10,13 @@ import DirectionText from './Text/DirectionText';
 export default function EditRecipe({ recipe }) {
   const router = useRouter();
 
+  const revalidate = async (id) => {
+    await fetch(`${API_URL}/api/revalidate?secret=revalidate`, {
+      method: 'POST',
+      body: JSON.stringify(id),
+    });
+  };
+
   const [values, setValues] = useState({
     title: recipe.title,
     ingredients: recipe.ingredients,
@@ -41,6 +48,7 @@ export default function EditRecipe({ recipe }) {
       });
 
       if (res.ok) {
+        revalidate(values.recipeId);
         const data = await res.json();
         router.push(`/recipes/${data.id.toString()}`);
       } else {
