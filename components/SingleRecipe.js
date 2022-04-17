@@ -4,6 +4,7 @@ import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import Modal from './Modal';
 import { API_URL } from '../lib/config';
+import Link from 'next/link';
 
 export default function SingleRecipe({
   title,
@@ -44,12 +45,12 @@ export default function SingleRecipe({
       <div className="flex">
         <div className="bg-white inline-block mx-8 p-5 border border-black">
           <h1 className="text-2xl">Ingredients</h1>
-          <p className="my-4">{parse(ingredients)}</p>
+          <div className="my-4">{parse(ingredients)}</div>
         </div>
         <div className="px-2 block">
           <div className="bg-white border border-black p-5">
             <h1 className="text-2xl">Directions</h1>
-            <p className="my-4">{parse(directions)}</p>
+            <div className="my-4">{parse(directions)}</div>
           </div>
         </div>
       </div>
@@ -60,7 +61,11 @@ export default function SingleRecipe({
 
       {session && session.user.userId === user_id && (
         <div className="mx-8">
-          <button className="px-6 bg-blue-600 mr-4">Edit</button>
+          <Link href={`/recipes/edit/${recipeId.toString()}`}>
+            <a className="px-4 bg-blue-600 hover:bg-blue-800 mr-4 font-bold py-2 border border-blue 800 rounded">
+              Edit
+            </a>
+          </Link>
           <button
             className="bg-red-600 hover:bg-red-700 font-bold py-2 px-4 border border-red-700 rounded"
             onClick={openModal}

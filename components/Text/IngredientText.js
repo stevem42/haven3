@@ -21,7 +21,7 @@ export default function IngredientText(props) {
 
   const editor = useEditor({
     extensions: [StarterKit],
-    content: '',
+    content: props.content || '',
     setActive: 'bulletList',
     onUpdate: ({ editor }) => {
       const html = editor.getHTML();

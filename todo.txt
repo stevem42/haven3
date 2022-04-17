@@ -29,33 +29,31 @@ Set up schema in schema.prisma to match next auth
 
 
 
-install Bcrypt
-
-
-
-
-
-
-
 Individual Recipe
 
 Show page for anyone
 Show edit and delete for creator only
 
 
+DONE ***************
+CHANGE AND DELETE .env
+Figure out deployment variables
+install Bcrypt
+
+
+********************
+
+
 
 
 TODO
 
-
-**** CHANGE AND DELETE .env
-Figure out deployment variables
-
-
-
+Edit Page
 Add Modal for delete recipe
 Add toast notification for create, edit and delete
 Add meal planning functionality
+Add error handling
+Check for user id in api routes
 
 
 

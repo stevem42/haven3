@@ -22,7 +22,7 @@ export default function DirectionText(props) {
 
   const editor = useEditor({
     extensions: [StarterKit],
-    content: '',
+    content: props.content || '',
     setActive: 'orderedList',
     onUpdate: ({ editor }) => {
       const html = editor.getHTML();
