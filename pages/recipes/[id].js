@@ -22,9 +22,9 @@ export default function IndividualRecipe({ recipe, recipeId }) {
     return <p>Loading...</p>;
   }
 
-  if (router.query.updated === 'true') {
-    router.push(`/recipes/${recipeId}`);
-  }
+  // if (router.query.updated === 'true') {
+  //   router.push(`/recipes/${recipeId}`);
+  // }
 
   return (
     <>
