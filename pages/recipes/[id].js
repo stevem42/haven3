@@ -10,13 +10,15 @@ export default function IndividualRecipe({ recipe, recipeId }) {
 
   const router = useRouter();
 
-  // useEffect(() => {
-  //   if (router.query.updated === 'true') {
-  //     window.onload = () => {
-  //       window.location.reload(true);
-  //     };
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (router.query.updated === 'true') {
+      setTimeout(() => {
+        window.onload = () => {
+          window.location.reload(true);
+        };
+      }, 5000);
+    }
+  }, []);
 
   if (router.isFallback) {
     return <p>Loading...</p>;
