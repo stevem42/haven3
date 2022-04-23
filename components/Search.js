@@ -9,7 +9,7 @@ export const Search = ({ recipes }) => {
   const isResults = term.length > 2;
 
   function handleChange(e) {
-    const searchTerm = e.target.value;
+    const searchTerm = e.target.value.toLowerCase();
     console.log(searchTerm);
     if (searchTerm !== '') {
       let results = recipes.filter((recipe) => {
