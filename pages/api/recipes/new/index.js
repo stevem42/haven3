@@ -2,13 +2,13 @@ import prisma from '../../../../lib/prisma';
 
 async function handler(req, res) {
   if (req.method === 'POST') {
-    const { title, ingredients, directions, notes, user_id } = req.body;
+    const { title, ingredients, directions, notes, user_id, course } = req.body;
 
     const date = new Date();
 
     const recipe = await prisma.recipe.create({
       data: {
-        course: 'dinner',
+        course,
         title: title,
         date_posted: date,
         ingredients,

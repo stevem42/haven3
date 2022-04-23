@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import parse from 'html-react-parser';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
@@ -8,6 +8,7 @@ import Link from 'next/link';
 
 export default function SingleRecipe({
   title,
+  course,
   ingredients,
   directions,
   notes,
@@ -37,11 +38,10 @@ export default function SingleRecipe({
 
   const { data: session } = useSession();
 
-  // console.log(session);
-
   return (
     <div>
       <h1 className="flex justify-center font-bold text-4xl my-10">{title}</h1>
+      <h3>Course: {course}</h3>
       <div className="flex">
         <div className="bg-white inline-block mx-8 p-5 border border-black">
           <h1 className="text-2xl">Ingredients</h1>

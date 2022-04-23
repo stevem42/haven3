@@ -2,22 +2,19 @@ import prisma from '../../../lib/prisma';
 
 async function handler(req, res) {
   if (req.method === 'PUT') {
-    const { title, ingredients, directions, notes, user_id, recipeId } =
+    const { title, ingredients, directions, notes, course, recipeId } =
       req.body;
-
-    const date = new Date();
 
     const recipe = await prisma.recipe.update({
       where: {
         id: recipeId,
       },
       data: {
-        course: 'dinner',
+        course,
         title: title,
         ingredients,
         directions,
         notes,
-        // user_id,
       },
     });
     console.log('UPDATED: ', recipe);

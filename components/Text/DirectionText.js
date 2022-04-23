@@ -27,8 +27,6 @@ export default function DirectionText(props) {
     onUpdate: ({ editor }) => {
       const html = editor.getHTML();
       props.updateText('directions', html);
-      //setText(html);
-      //console.log(html);
     },
   });
 

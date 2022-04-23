@@ -48,6 +48,7 @@ install Bcrypt
 
 TODO
 
+Add page - add dropdown and styling
 Edit Page
 Add Modal for delete recipe
 Add toast notification for create, edit and delete

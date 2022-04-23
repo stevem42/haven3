@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Search } from '../../components/Search';
 import { getAllRecipes } from '../../lib/dbUtil';
 
 export default function allRecipes({ recipes }) {
@@ -20,6 +21,7 @@ export default function allRecipes({ recipes }) {
       </ul> */}
 
       <div className="flex-col">
+        <Search recipes={recipes} />
         {recipes.map((recipe) => (
           <div key={recipe.id}>
             <Link href={`/recipes/${recipe.id.toString()}`} prefetch={false}>

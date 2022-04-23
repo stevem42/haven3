@@ -12,6 +12,7 @@ export default function AddRecipe({ user }) {
   console.log(user);
   const [values, setValues] = useState({
     title: '',
+    course: '',
     ingredients: '',
     directions: '',
     notes: '',
@@ -25,6 +26,11 @@ export default function AddRecipe({ user }) {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setValues({ ...values, [name]: value });
+  };
+
+  const handleCourseChange = (e) => {
+    const course = e.target.value;
+    setValues({ ...values, course: course });
   };
 
   async function handleSubmit(e) {
@@ -63,6 +69,21 @@ export default function AddRecipe({ user }) {
             value={values.title}
             onChange={handleInputChange}
           />
+          <select
+            name="course"
+            id="course"
+            onChange={handleInputChange}
+            defaultValue={'DEFAULT'}
+          >
+            <option value="DEFAULT" disabled>
+              Choose a Course
+            </option>
+            <option value="breakfast">Breakfast</option>
+            <option value="lunch">Lunch</option>
+            <option value="dinner">Dinner</option>
+            <option value="drinks">Drinks</option>
+            <option value="snacks">Snacks</option>
+          </select>
           <h2 className="text-xl">Ingredients</h2>
           <IngredientText updateText={updateTextState} />
           <h2 className="text-xl">Directions</h2>
@@ -85,7 +106,9 @@ export default function AddRecipe({ user }) {
       </form>
       <hr />
       <section>Ingredients: {parse(values.ingredients)}</section>
-      <section>Directions:{parse(values.directions)}</section>
+      <section>Directions: {parse(values.directions)}</section>
+      <section>Course: {parse(values.course)}</section>
+      {console.log(values)}
     </>
   );
 }

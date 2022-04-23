@@ -19,6 +19,7 @@ export default function EditRecipe({ recipe }) {
 
   const [values, setValues] = useState({
     title: recipe.title,
+    course: recipe.course,
     ingredients: recipe.ingredients,
     directions: recipe.directions,
     notes: recipe.notes,
@@ -52,7 +53,7 @@ export default function EditRecipe({ recipe }) {
         const data = await res.json();
         setTimeout(() => {
           router.push(`/recipes/${data.id.toString()}?updated=true`);
-        }, 5000);
+        }, 2000);
       } else {
         console.log('something went wrong edit recipe');
       }
@@ -74,6 +75,18 @@ export default function EditRecipe({ recipe }) {
             value={values.title}
             onChange={handleInputChange}
           />
+          <select
+            name="course"
+            id="course"
+            onChange={handleInputChange}
+            defaultValue={recipe.course}
+          >
+            <option value="breakfast">Breakfast</option>
+            <option value="lunch">Lunch</option>
+            <option value="dinner">Dinner</option>
+            <option value="drinks">Drinks</option>
+            <option value="snacks">Snacks</option>
+          </select>
           <h2 className="text-xl">Ingredients</h2>
           <IngredientText
             updateText={updateTextState}

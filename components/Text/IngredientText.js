@@ -26,8 +26,6 @@ export default function IngredientText(props) {
     onUpdate: ({ editor }) => {
       const html = editor.getHTML();
       props.updateText('ingredients', html);
-      //setText(html);
-      console.log(html);
     },
   });
 
