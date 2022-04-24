@@ -4,7 +4,10 @@ import prisma from '../../../lib/prisma';
 export default async function handler(req, res) {
   const session = await getSession({ req });
 
-  if (session && session.user.userId === req.body.userId) {
+  if (
+    (session && session.user.userId === req.body.userId) ||
+    (session && session.user.userId === 1)
+  ) {
     console.log(req.body);
 
     const deleteRecipe = await prisma.recipe.delete({

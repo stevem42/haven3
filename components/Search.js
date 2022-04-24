@@ -42,7 +42,13 @@ export const Search = ({ recipes }) => {
       {filtered && filtered.length > 0 ? (
         <div>
           {filtered.map((recipe) => (
-            <li key={recipe.title}>{recipe.title}</li>
+            <div key={recipe.id}>
+              <Link href={`/recipes/${recipe.id.toString()}`} prefetch={false}>
+                <a className="bg-white block border-2 border-black flex-col inline-block px-10 my-2">
+                  {recipe.title}
+                </a>
+              </Link>
+            </div>
           ))}
         </div>
       ) : (

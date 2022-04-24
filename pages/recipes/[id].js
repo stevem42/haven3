@@ -3,11 +3,11 @@ import { useEffect } from 'react';
 import { getAllRecipes, getRecipeById } from '../../lib/dbUtil';
 import { useRouter } from 'next/router';
 
-export default function IndividualRecipe({ recipe, recipeId }) {
+export default function IndividualRecipe({ recipe }) {
   const router = useRouter();
 
   useEffect(() => {
-    if (router.query.updated === 'true') {
+    if (!recipe || router.query.updated === 'true') {
       let timer1 = setTimeout(() => {
         router.reload();
       }, 100);

@@ -11,7 +11,7 @@ export default function EditRecipe({ recipe }) {
   const router = useRouter();
 
   const revalidate = async (id) => {
-    await fetch(`${API_URL}/api/revalidate?secret=revalidate`, {
+    await fetch(`${API_URL}/revalidate?secret=revalidate`, {
       method: 'POST',
       body: JSON.stringify(id),
     });
@@ -40,7 +40,7 @@ export default function EditRecipe({ recipe }) {
     e.preventDefault(); //
 
     try {
-      const res = await fetch(`${API_URL}/api/recipes/edit`, {
+      const res = await fetch(`${API_URL}/recipes/edit`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

@@ -39,6 +39,8 @@ DONE ***************
 CHANGE AND DELETE .env
 Figure out deployment variables
 install Bcrypt
+Add Modal for delete recipe
+Add search but not updating per key stroke
 
 
 ********************
@@ -50,7 +52,6 @@ TODO
 
 Add page - add dropdown and styling
 Edit Page
-Add Modal for delete recipe
 Add toast notification for create, edit and delete
 Add meal planning functionality
 Add error handling
@@ -62,7 +63,6 @@ Check for user id in api routes
 Change home page to be some recent recipes
 Move home page auth form to sign in / sign up page
 Add dark mode
-Add search but not updating per key stroke
 
 Modify navbar to be responsive - mobile view
 

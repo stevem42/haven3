@@ -24,7 +24,7 @@ export default function SingleRecipe({
   const router = useRouter();
 
   const handleDelete = async () => {
-    const res = await fetch(`${API_URL}/api/recipes/delete`, {
+    const res = await fetch(`${API_URL}/recipes/delete`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ export default function SingleRecipe({
       </div>
       <div className="my-4 bg-white ml-8 p-5 border border-black">
         <h1 className="text-2xl">Notes:</h1>
-        <p className="my-4">{parse(notes)}</p>
+        <div className="my-4">{parse(notes)}</div>
       </div>
 
       {session && session.user.userId === user_id && (
