@@ -40,7 +40,7 @@ export default function EditRecipe({ recipe }) {
     e.preventDefault(); //
 
     try {
-      const res = await fetch(`${API_URL}/recipes/edit`, {
+      const res = await fetch(`${API_URL}/api//recipes/edit`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

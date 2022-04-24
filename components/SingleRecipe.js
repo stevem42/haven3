@@ -24,7 +24,7 @@ export default function SingleRecipe({
   const router = useRouter();
 
   const handleDelete = async () => {
-    const res = await fetch(`${API_URL}/recipes/delete`, {
+    const res = await fetch(`${API_URL}/api//recipes/delete`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
