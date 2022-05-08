@@ -40,34 +40,37 @@ export default function SingleRecipe({
 
   return (
     <div>
-      <h1 className="flex justify-center font-bold text-4xl my-10">{title}</h1>
-      <h3>Course: {course}</h3>
+      <h1 className="flex justify-center font-bold text-4xl my-10 text-lakersPurple">
+        {title}
+      </h1>
       <div className="flex">
-        <div className="bg-white inline-block mx-8 p-5 border border-black">
+        <div className="bg-white inline-block mx-8 px-5 py-5 border border-black">
           <h1 className="text-2xl">Ingredients</h1>
-          <div className="my-4">{parse(ingredients)}</div>
+          <div className="my-4 leading-7">{parse(ingredients)}</div>
         </div>
         <div className="px-2 block">
-          <div className="bg-white border border-black p-5">
+          <div className="bg-white border border-black mx-8 p-5">
             <h1 className="text-2xl">Directions</h1>
-            <div className="my-4">{parse(directions)}</div>
+            <div className="m-4 leading-7">{parse(directions)}</div>
           </div>
         </div>
       </div>
-      <div className="my-4 bg-white ml-8 p-5 border border-black">
-        <h1 className="text-2xl">Notes:</h1>
-        <div className="my-4">{parse(notes)}</div>
-      </div>
+      {notes && (
+        <div className="mt-4 bg-white ml-8 p-5 border border-black">
+          <h1 className="text-2xl">Notes:</h1>
+          <div className="my-4">{parse(notes)}</div>
+        </div>
+      )}
 
       {session && session.user.userId === user_id && (
-        <div className="mx-8">
+        <div className="mx-8 mt-4">
           <Link href={`/recipes/edit/${recipeId.toString()}`}>
-            <a className="px-4 bg-blue-600 hover:bg-blue-800 mr-4 font-bold py-2 border border-blue 800 rounded">
+            <a className="px-4 bg-lakersGold text-lakersPurple hover:bg-yellow-300 mr-4 font-bold py-2.5 border border-lakersPurple rounded">
               Edit
             </a>
           </Link>
           <button
-            className="bg-red-600 hover:bg-red-700 font-bold py-2 px-4 border border-red-700 rounded"
+            className="bg-lakersPurple text-lakersGold hover:bg-purple-600 font-bold py-2 px-4 border border-lakersGold rounded"
             onClick={openModal}
           >
             Delete

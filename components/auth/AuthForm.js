@@ -57,8 +57,8 @@ export default function AuthForm(email, password) {
   }
 
   return (
-    <section>
-      <h1>{isLogin ? 'Login' : 'Sign Up'}</h1>
+    <section className="flex flex-col items-center">
+      <h1 className="pt-5">Log in or create an account</h1>
       <form onSubmit={submitHandler} className="py-5">
         <div className="py-3">
           <label htmlFor="email">Your Email: </label>

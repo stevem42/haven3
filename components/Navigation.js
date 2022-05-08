@@ -9,7 +9,7 @@ export default function Navigation() {
     signOut({ callbackUrl: '/' });
   }
   return (
-    <header className="bg-purple-400 py-4 mb-2">
+    <header className="bg-[#552583] py-4 mb-2 text-[#FDB927]">
       <nav className="flex justify-between mx-2 ">
         <div>
           <Link href="/">

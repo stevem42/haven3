@@ -113,9 +113,6 @@ export default function EditRecipe({ recipe }) {
           </button>
         </div>
       </form>
-      <hr />
-      <section>Ingredients: {parse(values.ingredients)}</section>
-      <section>Directions:{parse(values.directions)}</section>
     </>
   );
 }

@@ -58,17 +58,25 @@ export default function AddRecipe({ user }) {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <h1 className="text-center text-2xl">Add A New Recipe</h1>
-        <div className="w-80 flex flex-col">
-          <label htmlFor="title">Title</label>
-          <input
-            type="text"
-            id="title"
-            name="title"
-            value={values.title}
-            onChange={handleInputChange}
-          />
+      <h1 className="text-center text-lakersPurple text-2xl">
+        Add A New Recipe
+      </h1>
+      <form className="w-full" onSubmit={handleSubmit}>
+        <div className="flex items-center">
+          <div>
+            <label htmlFor="title">Title</label>
+          </div>
+          <div>
+            <input
+              type="text"
+              id="title"
+              name="title"
+              value={values.title}
+              onChange={handleInputChange}
+            />
+          </div>
+        </div>
+        <div className="items-center">
           <select
             name="course"
             id="course"
@@ -84,27 +92,27 @@ export default function AddRecipe({ user }) {
             <option value="drinks">Drinks</option>
             <option value="snacks">Snacks</option>
           </select>
-          <h2 className="text-xl">Ingredients</h2>
-          <IngredientText updateText={updateTextState} />
-          <h2 className="text-xl">Directions</h2>
-          <DirectionText updateText={updateTextState} />
-          <textarea
-            type="text"
-            name="notes"
-            id="notes"
-            value={values.notes}
-            onChange={handleInputChange}
-            className="my-5"
-          />
-          <button
-            type="submit"
-            className="bg-purple-400 hover:bg-purple-600 font-bold py-2 px-4 border border-purple-600 rounded"
-          >
-            Add Recipe
-          </button>
         </div>
+        <h2 className="text-xl">Ingredients</h2>
+        <IngredientText updateText={updateTextState} />
+        <h2 className="text-xl">Directions</h2>
+        <DirectionText updateText={updateTextState} />
+        <textarea
+          type="text"
+          name="notes"
+          id="notes"
+          value={values.notes}
+          onChange={handleInputChange}
+          className="my-5"
+        />
+        <button
+          type="submit"
+          className="bg-lakersPurple text-lakersGold hover:bg-purple-800 font-bold py-2 px-4 border border-lakersGold border-2 rounded"
+        >
+          Add Recipe
+        </button>
+        <hr />
       </form>
-      <hr />
       <section>Ingredients: {parse(values.ingredients)}</section>
       <section>Directions: {parse(values.directions)}</section>
       <section>Course: {parse(values.course)}</section>

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export const Search = ({ recipes }) => {
   const [term, setTerm] = useState('');
@@ -23,6 +23,12 @@ export const Search = ({ recipes }) => {
     setTerm(searchTerm);
   }
 
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
+
   // const filtered = recipes.filter((recipe) => {
   //   return recipe.title.includes(term);
   // });
@@ -38,13 +44,18 @@ export const Search = ({ recipes }) => {
 
   return (
     <div className="flex flex-col justify-center items-center">
-      <input className="max-w-[50%]" type="search" onChange={handleChange} />
+      <input
+        className="max-w-[50%] border focus:outline-none focus:border-lakersPurple"
+        type="search"
+        onChange={handleChange}
+        ref={inputRef}
+      />
       {filtered && filtered.length > 0 ? (
         <div>
           {filtered.map((recipe) => (
             <div key={recipe.id}>
               <Link href={`/recipes/${recipe.id.toString()}`} prefetch={false}>
-                <a className="bg-white block border-2 border-black flex-col inline-block px-10 my-2">
+                <a className="bg-white text-xl block border-2 border-lakersPurple text-lakersPurple flex-col inline-block px-10 my-2">
                   {recipe.title}
                 </a>
               </Link>

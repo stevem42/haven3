@@ -4,7 +4,12 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        lakersPurple: '#552583',
+        lakersGold: '#FDB927',
+      },
+    },
   },
   plugins: [],
 };
