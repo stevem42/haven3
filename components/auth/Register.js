@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React, { useRef } from 'react';
 
 async function createUser(email, password) {
@@ -81,12 +82,9 @@ export default function AuthForm(email, password) {
             </div>
             <div className="mt-6 text-grey-dark">
               Already have an account?
-              <a
-                className="text-lakersPurple hover:underline ml-4"
-                href="/login"
-              >
-                Log In
-              </a>
+              <Link href="/login">
+                <a className="text-lakersPurple hover:underline ml-4">Log In</a>
+              </Link>
             </div>
           </div>
         </form>

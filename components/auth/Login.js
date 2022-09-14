@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import React, { useRef, useState } from 'react';
 import { signIn, signOut } from 'next-auth/react';
+import Link from 'next/link';
 
 async function createUser(email, password) {
   const response = await fetch('/api/auth/signup', {
@@ -93,12 +94,11 @@ export default function AuthForm(email, password) {
             </div>
             <div className="mt-6 text-grey-dark">
               Dont have an account?
-              <a
-                className="text-lakersPurple hover:underline ml-4"
-                href="/register"
-              >
-                Register
-              </a>
+              <Link href="/register">
+                <a className="text-lakersPurple hover:underline ml-4">
+                  Register
+                </a>
+              </Link>
             </div>
           </div>
         </form>
