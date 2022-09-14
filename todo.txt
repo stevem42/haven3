@@ -50,6 +50,9 @@ Add search but not updating per key stroke
 
 TODO
 
+Add React Modal
+Add Toastify
+
 Add page - add dropdown and styling
 Edit Page
 Add toast notification for create, edit and delete

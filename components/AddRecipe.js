@@ -64,7 +64,7 @@ export default function AddRecipe({ user }) {
       <form className="w-full" onSubmit={handleSubmit}>
         <div className="flex items-center">
           <div>
-            <label htmlFor="title">Title</label>
+            <label htmlFor="title">Title: </label>
           </div>
           <div>
             <input
@@ -107,16 +107,12 @@ export default function AddRecipe({ user }) {
         />
         <button
           type="submit"
-          className="bg-lakersPurple text-lakersGold hover:bg-purple-800 font-bold py-2 px-4 border border-lakersGold border-2 rounded"
+          className="block bg-lakersPurple text-lakersGold hover:bg-purple-800 font-bold py-2 px-4 border border-lakersGold border-2 rounded"
         >
           Add Recipe
         </button>
         <hr />
       </form>
-      <section>Ingredients: {parse(values.ingredients)}</section>
-      <section>Directions: {parse(values.directions)}</section>
-      <section>Course: {parse(values.course)}</section>
-      {console.log(values)}
     </>
   );
 }

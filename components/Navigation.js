@@ -9,8 +9,8 @@ export default function Navigation() {
     signOut({ callbackUrl: '/' });
   }
   return (
-    <header className="bg-[#552583] py-4 mb-2 text-[#FDB927]">
-      <nav className="flex justify-between mx-2 ">
+    <header className="bg-[#552583] py-4 mb-2 text-[#FDB927] ">
+      <nav className="flex justify-between justify-center items-center mx-4 md:max-w-[90%] px-2">
         <div>
           <Link href="/">
             <a>Recipe Haven</a>
@@ -23,17 +23,27 @@ export default function Navigation() {
                 <a>All Recipes</a>
               </Link>
             </li>
-            <li>
-              <Link href="/recipes/add">
-                <a>New Recipe</a>
-              </Link>
-            </li>
-            {!session ? (
+            {session && (
               <li>
-                <Link href="/">
-                  <a>Login</a>
+                <Link href="/recipes/add">
+                  <a>New Recipe</a>
                 </Link>
               </li>
+            )}
+
+            {!session ? (
+              <div className="flex justify-between">
+                <li className="ml-5">
+                  <Link href="/login">
+                    <a>Login</a>
+                  </Link>
+                </li>
+                <li className="ml-5">
+                  <Link href="/register">
+                    <a>Register</a>
+                  </Link>
+                </li>
+              </div>
             ) : (
               <li>
                 <button onClick={handleSignOut}>Logout</button>

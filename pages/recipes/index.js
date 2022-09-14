@@ -5,7 +5,9 @@ import { getAllRecipes } from '../../lib/dbUtil';
 export default function allRecipes({ recipes }) {
   return (
     <div>
-      <h1 className="flex justify-center text-3xl">All Recipes Page</h1>
+      <h1 className="flex justify-center text-4xl text-lakersPurple">
+        All Recipes
+      </h1>
 
       <div className="flex-col justify-center">
         <Search recipes={recipes} />

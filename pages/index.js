@@ -41,34 +41,38 @@ export default function Home({ recipes }) {
   return (
     <div>
       <Head>
-        <title>Create Next App</title>
+        <title>Recipe Haven 3</title>
         <meta name="description" content="Recipe Haven 3" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main>
         <h1 className="flex justify-center text-3xl text-lakersPurple">
-          Recipe Haven 3
+          Welcome to Recipe Haven 3
         </h1>
 
-        {!session ? (
-          <AuthForm />
-        ) : (
-          <div className="flex flex-col items-center">
+        {!session && (
+          <div className="h3 text-center mt-4">
+            Login or Register To Create, Update and Delete Your Own Recipes
+          </div>
+        )}
+        <div className="flex flex-col justify-center itmes-center w-full max-w-lg mx-auto">
+          <h3 className="text-3xl text-center mt-8">Latest Recipes</h3>
+          <div className="">
             {recipes.map((recipe) => (
-              <div key={recipe.id}>
+              <div className="flex text-center" key={recipe.id}>
                 <Link
                   href={`/recipes/${recipe.id.toString()}`}
                   prefetch={false}
                 >
-                  <a className="bg-white text-xl block border-2 border-lakersPurple text-lakersPurple flex-col inline-block px-10 my-2">
+                  <a className="grow bg-white text-3xl block border-2 border-lakersPurple text-lakersPurple flex-col inline-block px-10 my-2 py-2 cursor-pointer">
                     {recipe.title}
                   </a>
                 </Link>
               </div>
             ))}
           </div>
-        )}
+        </div>
       </main>
 
       <footer></footer>
