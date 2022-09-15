@@ -1,22 +1,31 @@
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 import { useSession, signOut } from 'next-auth/react';
+import { FiMenu } from 'react-icons/fi';
+import { BiListUI } from 'react-icons/bi';
+import Mobile from './Mobile';
 
 export default function Navigation() {
+  const [isOpen, setIsOpen] = useState(false);
   const { data: session } = useSession();
 
   function handleSignOut() {
     signOut({ callbackUrl: '/' });
   }
+
+  const handleNav = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <header className="bg-[#552583] py-4 mb-2 text-[#FDB927] ">
-      <nav className="flex justify-between justify-center items-center mx-4 md:max-w-[90%] px-2">
-        <div>
+    <nav className="bg-[#552583] py-4 mb-2 text-[#FDB927]">
+      <div className="flex  justify-between items-center md:max-w-[80%] mx-auto">
+        <div className="ml-4">
           <Link href="/">
             <a>Recipe Haven</a>
           </Link>
         </div>
-        <div>
+        <div className="hidden md:flex">
           <ul className="flex list-[none] space-x-2">
             <li>
               <Link href="/recipes">
@@ -47,14 +56,25 @@ export default function Navigation() {
             ) : (
               <li>
                 <button onClick={handleSignOut}>Logout</button>
-                {/* <Link href="/logout">
-                  <a onClick={handleSignOut}>Logout</a>
-                </Link> */}
               </li>
             )}
           </ul>
         </div>
-      </nav>
-    </header>
+        {/* Mobile open button */}
+        <div className="md:hidden flex items-center pr-8">
+          <button onClick={handleNav}>
+            <FiMenu />
+          </button>
+        </div>
+      </div>
+      {/* Mobile Menu */}
+      {isOpen && (
+        <Mobile
+          session={session}
+          handleSignOut={handleSignOut}
+          handleNav={handleNav}
+        />
+      )}
+    </nav>
   );
 }

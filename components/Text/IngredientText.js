@@ -1,5 +1,6 @@
 import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
+import { FaList } from 'react-icons/fa';
 
 export default function IngredientText(props) {
   const MenuBar = ({ editor }) => {
@@ -8,12 +9,14 @@ export default function IngredientText(props) {
     }
 
     return (
-      <div className="border-b-2 border-black">
+      <div className="inline-block border m-1 border-black text-lg px-2 py-0 mb-6">
         <button
           onClick={() => editor.chain().focus().toggleBulletList().run()}
           className={editor.isActive('bulletList') ? 'is_active' : ''}
         >
-          Bullet List
+          <i>
+            <FaList />
+          </i>
         </button>
       </div>
     );

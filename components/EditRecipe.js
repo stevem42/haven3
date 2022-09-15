@@ -65,7 +65,9 @@ export default function EditRecipe({ recipe }) {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <h1 className="text-center text-2xl">Edit Your Recipe</h1>
+        <h1 className="flex justify-center text-4xl mt-4 text-lakersPurple">
+          Edit Your Recipe
+        </h1>
         <div className="w-80 flex flex-col">
           <label htmlFor="title">Title</label>
           <input

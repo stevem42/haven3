@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import DirectionText from './Text/DirectionText';
 import IngredientText from './Text/IngredientText';
+import { FiMenu, FiList } from 'react-icons/fi';
+import { BiListUI } from 'react-icons/bi';
 
 import parse from 'html-react-parser';
 import { useRouter } from 'next/router';
@@ -58,61 +60,77 @@ export default function AddRecipe({ user }) {
 
   return (
     <>
-      <h1 className="text-center text-lakersPurple text-2xl">
+      <h1 className="flex justify-center text-4xl mt-4 text-lakersPurple">
         Add A New Recipe
       </h1>
-      <form className="w-full" onSubmit={handleSubmit}>
-        <div className="flex items-center">
+      <div className="p-4">
+        <form className="w-full " onSubmit={handleSubmit}>
           <div>
-            <label htmlFor="title">Title: </label>
+            <div className="items-center py-2">
+              <select
+                name="course"
+                id="course"
+                onChange={handleInputChange}
+                defaultValue={'DEFAULT'}
+                className="px-4 bg-lakersGold text-lakersPurple"
+              >
+                <option value="DEFAULT" disabled>
+                  Choose a Course
+                </option>
+                <option value="breakfast">Breakfast</option>
+                <option value="lunch">Lunch</option>
+                <option value="dinner">Dinner</option>
+                <option value="drinks">Drinks</option>
+                <option value="snacks">Snacks</option>
+              </select>
+            </div>
+            <div className="flex flex-col ">
+              <label
+                htmlFor="title"
+                className="uppercase text-md py-1 text-lakersPurple"
+              >
+                Title
+              </label>
+              <div>
+                <input
+                  type="text"
+                  id="title"
+                  name="title"
+                  value={values.title}
+                  onChange={handleInputChange}
+                  className="w-[50%] border p-1 border-lakersPurple"
+                />
+              </div>
+            </div>
+            <div className="w-[80%]">
+              <h2 className="text-xl text-lakersPurple">Ingredients</h2>
+              <IngredientText updateText={updateTextState} />
+            </div>
+            <div className="w-[80%]">
+              <h2 className="text-xl text-lakersPurple">Directions</h2>
+              <DirectionText updateText={updateTextState} />
+            </div>
+            <div className="w-[80%]">
+              <h2 className="text-xl text-lakersPurple">Notes</h2>
+              <textarea
+                type="text"
+                name="notes"
+                id="notes"
+                value={values.notes}
+                onChange={handleInputChange}
+                placeholder="Enter any Notes or Recipe Link here"
+                className="my-2 w-full"
+              />
+            </div>
+            <button
+              type="submit"
+              className="block bg-lakersPurple text-lakersGold hover:bg-purple-800 font-bold py-2 px-4 border border-lakersGold border-2 rounded"
+            >
+              Add Recipe
+            </button>
           </div>
-          <div>
-            <input
-              type="text"
-              id="title"
-              name="title"
-              value={values.title}
-              onChange={handleInputChange}
-            />
-          </div>
-        </div>
-        <div className="items-center">
-          <select
-            name="course"
-            id="course"
-            onChange={handleInputChange}
-            defaultValue={'DEFAULT'}
-          >
-            <option value="DEFAULT" disabled>
-              Choose a Course
-            </option>
-            <option value="breakfast">Breakfast</option>
-            <option value="lunch">Lunch</option>
-            <option value="dinner">Dinner</option>
-            <option value="drinks">Drinks</option>
-            <option value="snacks">Snacks</option>
-          </select>
-        </div>
-        <h2 className="text-xl">Ingredients</h2>
-        <IngredientText updateText={updateTextState} />
-        <h2 className="text-xl">Directions</h2>
-        <DirectionText updateText={updateTextState} />
-        <textarea
-          type="text"
-          name="notes"
-          id="notes"
-          value={values.notes}
-          onChange={handleInputChange}
-          className="my-5"
-        />
-        <button
-          type="submit"
-          className="block bg-lakersPurple text-lakersGold hover:bg-purple-800 font-bold py-2 px-4 border border-lakersGold border-2 rounded"
-        >
-          Add Recipe
-        </button>
-        <hr />
-      </form>
+        </form>
+      </div>
     </>
   );
 }

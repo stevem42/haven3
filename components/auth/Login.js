@@ -1,36 +1,22 @@
 import { useRouter } from 'next/router';
-import React, { useRef, useState } from 'react';
-import { signIn, signOut } from 'next-auth/react';
+import React, { useEffect, useRef } from 'react';
+import { signIn } from 'next-auth/react';
 import Link from 'next/link';
 
-async function createUser(email, password) {
-  const response = await fetch('/api/auth/signup', {
-    method: 'POST',
-    body: JSON.stringify({ email, password }),
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
-
-  const data = await response.json();
-
-  if (!response.ok) {
-    throw new Error(data.message || 'Something Weeeent Wrong');
-  }
-
-  return data;
-}
-
 export default function AuthForm(email, password) {
+  const router = useRouter();
+
+  useEffect(() => {
+    router.query.ref === 'portfolio' && fillFields();
+  }, [router.query.ref]);
+
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
 
-  const [isLogin, setisLogin] = useState(true);
-  const router = useRouter();
-
-  function switchAuthModeHandler() {
-    setisLogin((prevState) => !prevState);
-  }
+  const fillFields = () => {
+    emailInputRef.current.value = 'demouser@demo.com';
+    passwordInputRef.current.value = 'Demouser123';
+  };
 
   async function submitHandler(event) {
     event.preventDefault();
@@ -55,7 +41,7 @@ export default function AuthForm(email, password) {
           Sign In To Your Account
         </h2>
 
-        <form onSubmit={submitHandler} className="py-5">
+        <form onSubmit={submitHandler} className="py-5" autoComplete="none">
           <div className="mt-4">
             <div>
               <label className="block" htmlFor="email">
@@ -64,7 +50,8 @@ export default function AuthForm(email, password) {
               <input
                 type="email"
                 id="email"
-                placeholder="Enter An Email"
+                name="email"
+                placeholder="Enter Your Email"
                 required
                 ref={emailInputRef}
                 className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
@@ -80,7 +67,8 @@ export default function AuthForm(email, password) {
                 id="password"
                 required
                 ref={passwordInputRef}
-                placeholder="Enter A Password"
+                autoComplete="new-password"
+                placeholder="Enter Your Password"
                 className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
               />
             </div>
