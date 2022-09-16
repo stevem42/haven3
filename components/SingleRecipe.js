@@ -39,16 +39,16 @@ export default function SingleRecipe({
   const { data: session } = useSession();
 
   return (
-    <div>
+    <div className="mx-auto text-lakersPurple">
       <h1 className="flex justify-center font-bold text-4xl my-10 text-lakersPurple">
         {title}
       </h1>
-      <div className="flex">
-        <div className="bg-white inline-block mx-8 px-5 py-5 border border-black">
+      <div className="m-auto grid lg:grid grid-cols-3 gap-8">
+        <div className="col-span-3 lg:col-span-2 bg-white inline-block mx-8 px-5 py-5 border border-lakersPurple">
           <h1 className="text-2xl">Ingredients</h1>
           <div className="my-4 leading-7">{parse(ingredients)}</div>
         </div>
-        <div className="px-2 block">
+        <div className="px-2 col-span-3">
           <div className="bg-white border border-black mx-8 p-5">
             <h1 className="text-2xl">Directions</h1>
             <div className="m-4 leading-7">{parse(directions)}</div>
@@ -56,7 +56,7 @@ export default function SingleRecipe({
         </div>
       </div>
       {notes && (
-        <div className="mt-4 bg-white ml-8 p-5 border border-black">
+        <div className="mt-4 bg-white ml-8 p-5 border border-lakersPurple">
           <h1 className="text-2xl">Notes:</h1>
           <div className="my-4">{parse(notes)}</div>
         </div>

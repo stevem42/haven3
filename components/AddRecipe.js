@@ -64,7 +64,7 @@ export default function AddRecipe({ user }) {
         Add A New Recipe
       </h1>
       <div className="p-4">
-        <form className="w-full " onSubmit={handleSubmit}>
+        <form className="w-full" onSubmit={handleSubmit}>
           <div>
             <div className="items-center py-2">
               <select
@@ -72,7 +72,7 @@ export default function AddRecipe({ user }) {
                 id="course"
                 onChange={handleInputChange}
                 defaultValue={'DEFAULT'}
-                className="px-4 bg-lakersGold text-lakersPurple"
+                className="px-4 text-lakersGold bg-lakersPurple py-2"
               >
                 <option value="DEFAULT" disabled>
                   Choose a Course
@@ -87,7 +87,7 @@ export default function AddRecipe({ user }) {
             <div className="flex flex-col ">
               <label
                 htmlFor="title"
-                className="uppercase text-md py-1 text-lakersPurple"
+                className="uppercase text-md  text-lakersPurple"
               >
                 Title
               </label>
@@ -98,20 +98,26 @@ export default function AddRecipe({ user }) {
                   name="title"
                   value={values.title}
                   onChange={handleInputChange}
-                  className="w-[50%] border p-1 border-lakersPurple"
+                  className="w-[80%] border mt-1 py-1 border-lakersPurple"
                 />
               </div>
             </div>
-            <div className="w-[80%]">
-              <h2 className="text-xl text-lakersPurple">Ingredients</h2>
+            <div className="w-[80%] py-1 mt-8">
+              <label className="uppercase text-md py-1 text-lakersPurple">
+                Ingredients
+              </label>
               <IngredientText updateText={updateTextState} />
             </div>
-            <div className="w-[80%]">
-              <h2 className="text-xl text-lakersPurple">Directions</h2>
+            <div className="w-[80%] py-1 mt-8">
+              <label className="uppercase text-md py-1 text-lakersPurple">
+                Directions
+              </label>
               <DirectionText updateText={updateTextState} />
             </div>
-            <div className="w-[80%]">
-              <h2 className="text-xl text-lakersPurple">Notes</h2>
+            <div className="w-[80%] py-1 mt-8">
+              <label className="uppercase text-md py-1 text-lakersPurple">
+                Notes{' '}
+              </label>
               <textarea
                 type="text"
                 name="notes"
@@ -119,12 +125,12 @@ export default function AddRecipe({ user }) {
                 value={values.notes}
                 onChange={handleInputChange}
                 placeholder="Enter any Notes or Recipe Link here"
-                className="my-2 w-full"
+                className="my-2 w-full border mt-1 p-1 border-lakersPurple"
               />
             </div>
             <button
               type="submit"
-              className="block bg-lakersPurple text-lakersGold hover:bg-purple-800 font-bold py-2 px-4 border border-lakersGold border-2 rounded"
+              className="block bg-lakersPurple text-lakersGold hover:bg-purple-800 font-bold py-2 px-4 border border-lakersGold rounded"
             >
               Add Recipe
             </button>

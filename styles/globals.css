@@ -16,4 +16,7 @@ ol {
   body {
     @apply bg-slate-200;
   }
+  h6 {
+    @apply text-2xl;
+  }
 }
