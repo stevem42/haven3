@@ -43,20 +43,28 @@ export default function SingleRecipe({
       <h1 className="flex justify-center font-bold text-4xl my-10 text-lakersPurple">
         {title}
       </h1>
-      <div className="m-auto grid lg:grid grid-cols-3 gap-8">
-        <div className="col-span-3 lg:col-span-2 bg-white inline-block mx-8 px-5 py-5 border border-lakersPurple">
-          <h1 className="text-2xl">Ingredients</h1>
-          <div className="my-4 leading-7">{parse(ingredients)}</div>
+      <div className="m-auto grid grid-cols-3 gap-6 auto-rows-auto">
+        <div className="col-span-3 lg:col-span-1 bg-white inline-block px-0 border border-lakersPurple">
+          <h2 className="text-3xl text-center bg-lakersPurple text-lakersGold py-4">
+            Ingredients
+          </h2>
+          <div className="my-4 leading-9 text-xl ml-10">
+            {parse(ingredients)}
+          </div>
         </div>
-        <div className="px-2 col-span-3">
-          <div className="bg-white border border-black mx-8 p-5">
-            <h1 className="text-2xl">Directions</h1>
-            <div className="m-4 leading-7">{parse(directions)}</div>
+        <div className="col-span-3 lg:col-span-2">
+          <div className="bg-white border border-black mx-0 p-0">
+            <h2 className="text-3xl text-center bg-lakersPurple text-lakersGold py-4">
+              Directions
+            </h2>
+            <div className="m-4 leading-8 ml-10 text-xl">
+              {parse(directions)}
+            </div>
           </div>
         </div>
       </div>
       {notes && (
-        <div className="mt-4 bg-white ml-8 p-5 border border-lakersPurple">
+        <div className="mt-4 bg-white p-5 border border-lakersPurple">
           <h1 className="text-2xl">Notes:</h1>
           <div className="my-4">{parse(notes)}</div>
         </div>

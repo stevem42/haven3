@@ -10,7 +10,7 @@ export default function IndividualRecipe({ recipe }) {
     if (!recipe || router.query.updated === 'true') {
       let timer1 = setTimeout(() => {
         router.reload();
-      }, 100);
+      }, 200);
 
       return () => {
         clearTimeout(timer1);
