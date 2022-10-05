@@ -66,7 +66,7 @@ export default function SingleRecipe({
       {notes && (
         <div className="mt-4 bg-white p-5 border border-lakersPurple">
           <h1 className="text-2xl">Notes:</h1>
-          <div className="my-4">{parse(notes)}</div>
+          <p className="my-4 break-words">{parse(notes)}</p>
         </div>
       )}
 
