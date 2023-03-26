@@ -40,7 +40,7 @@ export default function SingleRecipe({
 
   return (
     <div className="mx-auto text-lakersPurple">
-      <h1 className="flex justify-center font-bold text-4xl my-10 text-lakersPurple">
+      <h1 className="flex justify-center text-center font-bold text-4xl my-10 text-lakersPurple">
         {title}
       </h1>
       <div className="m-auto grid grid-cols-3 gap-6 auto-rows-auto">
@@ -64,14 +64,14 @@ export default function SingleRecipe({
         </div>
       </div>
       {notes && (
-        <div className="mt-4 bg-white p-5 border border-lakersPurple">
+        <div className="my-4 bg-white p-5 border border-lakersPurple">
           <h1 className="text-2xl">Notes:</h1>
           <p className="my-4 break-words">{parse(notes)}</p>
         </div>
       )}
 
       {session && session.user.userId === user_id && (
-        <div className="mx-8 mt-4">
+        <div className="mx-8 my-4">
           <Link href={`/recipes/edit/${recipeId.toString()}`}>
             <a className="px-4 bg-lakersGold text-lakersPurple hover:bg-yellow-300 mr-4 font-bold py-2.5 border border-lakersPurple rounded">
               Edit
