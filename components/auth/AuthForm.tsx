@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import React, { useRef, useState } from 'react';
 import { signIn, signOut } from 'next-auth/react';
 
-async function createUser(email, password) {
+async function createUser(email: string, password: string) {
   const response = await fetch('/api/auth/signup', {
     method: 'POST',
     body: JSON.stringify({ email, password }),
@@ -20,21 +20,27 @@ async function createUser(email, password) {
   return data;
 }
 
-export default function AuthForm(email, password) {
-  const emailInputRef = useRef();
-  const passwordInputRef = useRef();
+export default function AuthForm() {
+  const emailInputRef = useRef<HTMLInputElement>(null);
+  const passwordInputRef = useRef<HTMLInputElement>(null);
 
   const [isLogin, setisLogin] = useState(true);
-  const router = useRouter();
 
   function switchAuthModeHandler() {
     setisLogin((prevState) => !prevState);
   }
 
-  async function submitHandler(event) {
+  async function submitHandler(event: React.SyntheticEvent) {
     event.preventDefault();
-    const enteredEmail = emailInputRef.current.value;
-    const enteredPassword = passwordInputRef.current.value;
+    const enteredEmail = emailInputRef.current?.value;
+    const enteredPassword = passwordInputRef.current?.value;
+
+    console.log('HERE');
+
+    if (!enteredEmail || !enteredPassword) {
+      alert('enter your shit');
+      return;
+    }
 
     if (isLogin) {
       const result = await signIn('credentials', {
@@ -43,9 +49,6 @@ export default function AuthForm(email, password) {
         password: enteredPassword,
       });
       console.log(result);
-      // if (!result.error) {
-      //   router.replace('/recipes');
-      // }
     } else {
       try {
         const result = await createUser(enteredEmail, enteredPassword);

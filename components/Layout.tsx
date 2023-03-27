@@ -1,6 +1,10 @@
 import Navigation from './Navigation/Navigation';
 
-export default function Layout({ children }) {
+export interface LayoutProps {
+  children: React.ReactNode;
+}
+
+export default function Layout({ children }: LayoutProps) {
   return (
     <>
       <Navigation />

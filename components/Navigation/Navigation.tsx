@@ -2,7 +2,6 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 import { useSession, signOut } from 'next-auth/react';
 import { FiMenu } from 'react-icons/fi';
-import { BiListUI } from 'react-icons/bi';
 import Mobile from './Mobile';
 
 export default function Navigation() {
