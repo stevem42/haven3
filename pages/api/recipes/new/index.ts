@@ -1,6 +1,7 @@
-import prisma from '../../../../lib/prisma';
+import { NextApiRequest, NextApiResponse } from 'next';
+import { prisma } from '../../../../lib/prisma';
 
-async function handler(req, res) {
+async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
     const { title, ingredients, directions, notes, user_id, course } = req.body;
 

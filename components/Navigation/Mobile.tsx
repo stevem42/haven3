@@ -1,7 +1,14 @@
 import Link from 'next/link';
 import React from 'react';
+import { Session } from 'next-auth';
 
-const Mobile = ({ session, handleSignOut, handleNav }) => {
+interface MobileProps {
+  session: Session | null;
+  handleSignOut: () => void;
+  handleNav: () => void;
+}
+
+const Mobile = ({ session, handleSignOut, handleNav }: MobileProps) => {
   return (
     <div>
       <ul className="list-[none] ml-4 py-2">

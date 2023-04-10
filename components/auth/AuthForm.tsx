@@ -35,10 +35,8 @@ export default function AuthForm() {
     const enteredEmail = emailInputRef.current?.value;
     const enteredPassword = passwordInputRef.current?.value;
 
-    console.log('HERE');
-
     if (!enteredEmail || !enteredPassword) {
-      alert('enter your shit');
+      alert('Emal and Password are required');
       return;
     }
 
@@ -48,11 +46,9 @@ export default function AuthForm() {
         email: enteredEmail,
         password: enteredPassword,
       });
-      console.log(result);
     } else {
       try {
         const result = await createUser(enteredEmail, enteredPassword);
-        console.log(result);
       } catch (error) {
         console.log(error);
       }

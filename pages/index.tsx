@@ -3,12 +3,17 @@ import Head from 'next/head';
 import { getSession, useSession } from 'next-auth/react';
 import { getSomeRecipes } from '../lib/dbUtil';
 import Link from 'next/link';
+import { recipe } from '@prisma/client';
 
-export default function Home({ recipes }) {
+interface HomePageProps {
+  recipes: recipe[] | undefined;
+}
+
+export default function Home({ recipes }: HomePageProps) {
   const { data: session } = useSession();
 
   return (
-    <div>
+    <>
       <Head>
         <title>Recipe Haven v3</title>
         <meta name="description" content="Recipe Haven 3" />
@@ -32,7 +37,7 @@ export default function Home({ recipes }) {
             Latest Recipes
           </h3>
           <div className="">
-            {recipes.map((recipe) => (
+            {recipes?.map((recipe) => (
               <div className="flex text-center" key={recipe.id}>
                 <Link
                   href={`/recipes/${recipe.id.toString()}`}
@@ -49,7 +54,7 @@ export default function Home({ recipes }) {
       </main>
 
       <footer></footer>
-    </div>
+    </>
   );
 }
 

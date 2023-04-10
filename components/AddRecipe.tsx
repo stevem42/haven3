@@ -1,62 +1,50 @@
-import { useState } from 'react';
 import DirectionText from './Text/DirectionText';
 import IngredientText from './Text/IngredientText';
-import { FiMenu, FiList } from 'react-icons/fi';
-import { BiListUI } from 'react-icons/bi';
-
-import parse from 'html-react-parser';
+import { RecipeSchema } from './auth/types';
+import sanitizeHtml from 'sanitize-html';
 import { useRouter } from 'next/router';
+import { SubmitHandler, useForm } from 'react-hook-form';
 
-import { API_URL } from '../lib/config';
+interface AddRecipeProps {
+  user: {
+    id: string;
+  };
+}
 
-export default function AddRecipe({ user }) {
+export default function AddRecipe({ user }: AddRecipeProps) {
   const router = useRouter();
-  console.log(user);
-  const [values, setValues] = useState({
-    title: '',
-    course: '',
-    ingredients: '',
-    directions: '',
-    notes: '',
-    user_id: user.userId,
+
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { isDirty, dirtyFields, errors },
+  } = useForm({
+    defaultValues: {
+      title: '',
+      course: '',
+      ingredients: '',
+      directions: '',
+      notes: '',
+      user_id: user.id,
+    },
   });
 
-  function updateTextState(name, text) {
-    setValues((prevState) => ({ ...prevState, [name]: text }));
-  }
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setValues({ ...values, [name]: value });
-  };
-
-  const handleCourseChange = (e) => {
-    const course = e.target.value;
-    setValues({ ...values, course: course });
-  };
-
-  async function handleSubmit(e) {
-    e.preventDefault(); //
-
-    try {
-      const res = await fetch(`${API_URL}/api/recipes/new`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(values),
-      });
-
-      if (res.ok) {
-        const data = await res.json();
-        router.push(`/recipes/${data.id.toString()}`);
-      } else {
-        console.log('something went wrong add rec');
-      }
-    } catch (error) {
-      console.log(error);
+  const onFormSubmit: SubmitHandler<RecipeSchema> = async (data) => {
+    const res = await fetch(`/api/recipes/new`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: sanitizeHtml(JSON.stringify(data)),
+    });
+    if (res.ok) {
+      const data = await res.json();
+      router.push(`/recipes/${data.id.toString()}`);
+    } else {
+      console.log('something went wrong add rec');
     }
-  }
+  };
 
   return (
     <>
@@ -64,17 +52,16 @@ export default function AddRecipe({ user }) {
         Add A New Recipe
       </h1>
       <div className="p-4">
-        <form className="w-full" onSubmit={handleSubmit}>
+        <form className="w-full" onSubmit={handleSubmit(onFormSubmit)}>
           <div>
             <div className="items-center py-2">
               <select
+                {...register('course')}
                 name="course"
                 id="course"
-                onChange={handleInputChange}
-                defaultValue={'DEFAULT'}
                 className="px-4 text-lakersGold bg-lakersPurple py-2"
               >
-                <option value="DEFAULT" disabled>
+                <option value="" disabled>
                   Choose a Course
                 </option>
                 <option value="breakfast">Breakfast</option>
@@ -95,9 +82,7 @@ export default function AddRecipe({ user }) {
                 <input
                   type="text"
                   id="title"
-                  name="title"
-                  value={values.title}
-                  onChange={handleInputChange}
+                  {...register('title')}
                   className="w-[80%] border mt-1 py-1 border-lakersPurple"
                 />
               </div>
@@ -106,26 +91,23 @@ export default function AddRecipe({ user }) {
               <label className="uppercase text-md py-1 text-lakersPurple">
                 Ingredients
               </label>
-              <IngredientText updateText={updateTextState} />
+              <IngredientText updateText={setValue} content="" />
             </div>
             <div className="w-[80%] py-1 mt-8">
               <label className="uppercase text-md py-1 text-lakersPurple">
                 Directions
               </label>
-              <DirectionText updateText={updateTextState} />
+              <DirectionText updateText={setValue} content="" />
             </div>
             <div className="w-[80%] py-1 mt-8">
               <label className="uppercase text-md py-1 text-lakersPurple">
                 Notes{' '}
               </label>
               <textarea
-                type="text"
-                name="notes"
                 id="notes"
-                value={values.notes}
-                onChange={handleInputChange}
+                {...register('notes')}
                 placeholder="Enter any Notes or Recipe Link here"
-                className="my-2 w-full border mt-1 p-1 border-lakersPurple"
+                className="my-2 w-full border mt-1 p-1 border-lakersPurple px-2"
               />
             </div>
             <button

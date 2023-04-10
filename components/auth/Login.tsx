@@ -1,11 +1,10 @@
 import { useRouter } from 'next/router';
-import React, { useEffect, useRef, FormEvent, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { signIn } from 'next-auth/react';
 import Link from 'next/link';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import { FormSchema } from './types';
+import { LoginFormSchema } from './types';
 
 export default function Login() {
   const [portfolio, setPortfolio] = useState(false);
@@ -16,8 +15,8 @@ export default function Login() {
     setError,
     formState: { errors },
     reset,
-  } = useForm<FormSchema>({
-    resolver: zodResolver(FormSchema),
+  } = useForm<LoginFormSchema>({
+    resolver: zodResolver(LoginFormSchema),
   });
 
   useEffect(() => {
@@ -27,18 +26,15 @@ export default function Login() {
         email: 'demouser@demo.com',
         password: 'Demouser123',
       });
-      console.log(portfolio);
     }
   }, [router.query.ref, portfolio, reset]);
 
-  const onFormSubmit: SubmitHandler<FormSchema> = async (data) => {
+  const onFormSubmit: SubmitHandler<LoginFormSchema> = async (data) => {
     const result = await signIn('credentials', {
       redirect: false,
       email: data.email,
       password: data.password,
     });
-
-    console.log(result);
 
     if (result?.error) {
       setError('root.random', {
@@ -105,10 +101,7 @@ export default function Login() {
               </button>
             </div>
             {errors.root?.random && (
-              <div className="border-red-600 border-4 text-center font-bold mt-5">{`${
-                errors.root.random.message === 'No user found' &&
-                'No matching users found'
-              }`}</div>
+              <div className="border-red-600 border-4 text-center font-bold mt-5">{`${errors.root.random.message}`}</div>
             )}
             <div className="mt-6 text-grey-dark">
               Dont have an account?

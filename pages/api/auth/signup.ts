@@ -1,7 +1,8 @@
+import type { NextApiRequest, NextApiResponse } from 'next';
 import { hashPassword } from '../../../lib/auth';
-import prisma from '../../../lib/prisma';
+import { prisma } from '../../../lib/prisma';
 
-async function handler(req, res) {
+async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
     const data = req.body;
 
@@ -30,13 +31,19 @@ async function handler(req, res) {
 
     const hashedPassword = await hashPassword(password);
 
-    const result = await prisma.user.create({
+    const user = await prisma.user.create({
       data: {
         username: email,
         email: email,
         password: hashedPassword,
       },
     });
+
+    if (!user) {
+      throw new Error('Unable to create user');
+    } else {
+      return user;
+    }
     res.status(201).json({ message: 'Created new user' });
   }
 }

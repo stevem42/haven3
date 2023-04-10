@@ -1,4 +1,10 @@
-const Modal = ({ showModal, setShowModal, handleDelete }) => {
+interface ModalProps {
+  showModal: boolean;
+  setShowModal: () => void;
+  handleDelete: () => Promise<void>;
+}
+
+const Modal = ({ showModal, setShowModal, handleDelete }: ModalProps) => {
   return (
     <>
       {showModal ? (

@@ -6,16 +6,17 @@ import Modal from './Modal';
 import { API_URL } from '../lib/config';
 import Link from 'next/link';
 
+import { CreatedRecipeSchema } from './auth/types';
+
 export default function SingleRecipe({
   title,
-  course,
   ingredients,
   directions,
   notes,
   user_id,
-  recipeId,
-}) {
-  const [showModal, setShowModal] = useState(false);
+  id,
+}: CreatedRecipeSchema) {
+  const [showModal, setShowModal] = useState<boolean>(false);
 
   const openModal = () => {
     setShowModal((prev) => !prev);
@@ -24,15 +25,14 @@ export default function SingleRecipe({
   const router = useRouter();
 
   const handleDelete = async () => {
-    const res = await fetch(`${API_URL}/api//recipes/delete`, {
+    const res = await fetch(`/api/recipes/delete`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ recipeId: recipeId, userId: user_id }),
+      body: JSON.stringify({ recipeId: id, userId: user_id }),
     });
     const data = await res.json();
-    console.log(data);
     router.push('/recipes');
   };
 
@@ -70,9 +70,9 @@ export default function SingleRecipe({
         </div>
       )}
 
-      {session && session.user.userId === user_id && (
+      {session && session.user.id === user_id && (
         <div className="mx-8 my-4">
-          <Link href={`/recipes/edit/${recipeId.toString()}`}>
+          <Link href={`/recipes/edit/${id?.toString()}`}>
             <a className="px-4 bg-lakersGold text-lakersPurple hover:bg-yellow-300 mr-4 font-bold py-2.5 border border-lakersPurple rounded">
               Edit
             </a>

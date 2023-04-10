@@ -106,6 +106,7 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
+  "files": ["types.d.ts"],
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }

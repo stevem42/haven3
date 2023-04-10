@@ -1,7 +1,10 @@
-import getAllRecipes from '../../lib/dbUtil';
-import prisma from '../../lib/prisma';
+import { NextApiRequest, NextApiResponse } from 'next';
+import { prisma } from '../../lib/prisma';
 
-export default async function handler(req, res) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   try {
     // const recipes = await getAllRecipes();
     const recipes = await prisma.recipe.findMany();
