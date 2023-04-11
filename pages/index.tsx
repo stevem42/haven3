@@ -38,14 +38,15 @@ export default function Home({ recipes }: HomePageProps) {
           </h3>
           <div className="">
             {recipes?.map((recipe) => (
-              <div className="flex text-center" key={recipe.id}>
+              <div
+                className="flex text-center grow bg-white text-3xl border-2 border-lakersPurple text-lakersPurple flex-col px-10 my-2 py-2 cursor-pointer"
+                key={recipe.id}
+              >
                 <Link
                   href={`/recipes/${recipe.id.toString()}`}
                   prefetch={false}
                 >
-                  <a className="grow bg-white text-3xl border-2 border-lakersPurple text-lakersPurple flex-col inline-block px-10 my-2 py-2 cursor-pointer">
-                    {recipe.title}
-                  </a>
+                  {recipe.title}
                 </Link>
               </div>
             ))}

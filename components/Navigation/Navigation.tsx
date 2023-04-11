@@ -20,36 +20,26 @@ export default function Navigation() {
     <nav className="bg-[#552583] py-4 mb-2 text-[#FDB927]">
       <div className="flex  justify-between items-center md:max-w-[80%] mx-auto">
         <div className="ml-4">
-          <Link href="/">
-            <a>Recipe Haven</a>
-          </Link>
+          <Link href="/">Recipe Haven</Link>
         </div>
         <div className="hidden md:flex">
           <ul className="flex list-[none] space-x-2">
             <li>
-              <Link href="/recipes">
-                <a>All Recipes</a>
-              </Link>
+              <Link href="/recipes">All Recipes</Link>
             </li>
             {session && (
               <li>
-                <Link href="/recipes/add">
-                  <a>New Recipe</a>
-                </Link>
+                <Link href="/recipes/add">New Recipe</Link>
               </li>
             )}
 
             {!session ? (
               <div className="flex justify-between">
                 <li className="ml-5">
-                  <Link href="/login">
-                    <a>Login</a>
-                  </Link>
+                  <Link href="/login">Login</Link>
                 </li>
                 <li className="ml-5">
-                  <Link href="/register">
-                    <a>Register</a>
-                  </Link>
+                  <Link href="/register">Register</Link>
                 </li>
               </div>
             ) : (

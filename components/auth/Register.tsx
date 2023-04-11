@@ -88,8 +88,11 @@ export default function Register() {
             </div>
             <div className="mt-6 text-grey-dark">
               Already have an account?
-              <Link href="/login">
-                <a className="text-lakersPurple hover:underline ml-4">Log In</a>
+              <Link
+                href="/login"
+                className="text-lakersPurple hover:underline ml-4"
+              >
+                Log In
               </Link>
             </div>
           </div>

@@ -71,10 +71,11 @@ export default function SingleRecipe({
 
       {session && session.user.id === user_id && (
         <div className="mx-8 my-4">
-          <Link href={`/recipes/edit/${id?.toString()}`}>
-            <a className="px-4 bg-lakersGold text-lakersPurple hover:bg-yellow-300 mr-4 font-bold py-2.5 border border-lakersPurple rounded">
-              Edit
-            </a>
+          <Link
+            className="px-4 bg-lakersGold text-lakersPurple hover:bg-yellow-300 mr-4 font-bold py-2.5 border border-lakersPurple rounded"
+            href={`/recipes/edit/${id?.toString()}`}
+          >
+            Edit
           </Link>
           <button
             className="bg-lakersPurple text-lakersGold hover:bg-purple-600 font-bold py-2 px-4 border border-lakersGold rounded"

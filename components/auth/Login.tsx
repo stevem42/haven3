@@ -105,10 +105,11 @@ export default function Login() {
             )}
             <div className="mt-6 text-grey-dark">
               Dont have an account?
-              <Link href="/register">
-                <a className="text-lakersPurple hover:underline ml-4">
-                  Register
-                </a>
+              <Link
+                href="/register"
+                className="text-lakersPurple hover:underline ml-4"
+              >
+                Register
               </Link>
             </div>
           </div>
