@@ -10,7 +10,7 @@ export default async function handler(
   const id = req.body;
 
   try {
-    await res.unstable_revalidate(`/recipes/${id}`);
+    await res.revalidate(`/recipes/${id}`);
     return res.json({ revalidated: true });
   } catch (error) {
     return res.status(500).send('Error Revalidating');

@@ -1,8 +1,5 @@
-import Link from 'next/link';
 import { Search } from '../../components/Search';
 import { getAllRecipes } from '../../lib/dbUtil';
-import { RecipeArray, isRecipeArray } from '../../lib/types';
-import { FC } from 'react';
 import { GetStaticProps, NextPage } from 'next';
 import { recipe } from '@prisma/client';
 

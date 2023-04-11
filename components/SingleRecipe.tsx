@@ -1,9 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import parse from 'html-react-parser';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import Modal from './Modal';
-import { API_URL } from '../lib/config';
 import Link from 'next/link';
 
 import { CreatedRecipeSchema } from './auth/types';

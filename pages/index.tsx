@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-import { getSession, useSession } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
 import { getSomeRecipes } from '../lib/dbUtil';
 import Link from 'next/link';
 import { recipe } from '@prisma/client';

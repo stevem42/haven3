@@ -36,7 +36,7 @@ export const authOptions: NextAuthOptions = {
           throw new Error('Could not log you in');
         }
 
-        return user;
+        return user as any;
       },
     }),
   ],
