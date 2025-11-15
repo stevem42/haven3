@@ -76,7 +76,7 @@ export default function AuthForm(email, password) {
             <div className="flex">
               <button
                 onClick={submitHandler}
-                className="w-full bg-lakersPurple text-lakersGold hover:bg-purple-800 font-bold mt-4 py-2 px-4 border border-lakersGold border-2 rounded"
+                className="w-full bg-lakersPurple text-lakersGold hover:bg-purple-800 font-bold mt-4 py-2 px-4 border border-lakersGold rounded"
               >
                 Create Account
               </button>
