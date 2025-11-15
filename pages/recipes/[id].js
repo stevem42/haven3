@@ -41,11 +41,24 @@ export async function getStaticProps(context) {
   const recipeId = context.params.id;
   const recipe = await getRecipeById(recipeId);
 
+  if (!recipe) {
+    return {
+      notFound: true,
+    };
+  }
+
+  // Serialize the Date object to avoid JSON serialization errors
+  const serializedRecipe = {
+    ...recipe,
+    date_posted: recipe.date_posted.toISOString(),
+  };
+
   return {
     props: {
-      recipe,
+      recipe: serializedRecipe,
       recipeId,
     },
+    revalidate: 1, // ISR - regenerate page every 1 second if needed
   };
 }
 
