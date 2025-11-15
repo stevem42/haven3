@@ -113,12 +113,14 @@ export const Search = ({ recipes }: SeachProps) => {
         </i>
       </div>
       <div>
+        {/* 
+        // temporarily removing this to push the ts changes to prod
         <button
           onClick={handleCourseSelect}
           className="inline-block bg-lakersPurple text-2xl border-2 border-lakersGold text-lakersGold px-10 my-2 py-2 cursor-pointer"
         >
           dinner
-        </button>
+        </button> */}
       </div>
       {filtered && filtered.length > 0 ? (
         <div>
