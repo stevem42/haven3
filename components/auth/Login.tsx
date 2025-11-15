@@ -68,7 +68,7 @@ export default function Login() {
                 id="email"
                 placeholder="Enter Your Email"
                 {...register('email')}
-                className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 ${}"
+                className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
               />
               {errors.email && (
                 <p className="text-xs italic text-red-500 mt-2">

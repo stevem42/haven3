@@ -25,7 +25,10 @@ export async function getRecipeById(id: number) {
       },
     });
     return recipe;
-  } catch (error) {}
+  } catch (error) {
+    //TODO - error handling
+    console.log(error);
+  }
 }
 
 export async function getSomeRecipes() {

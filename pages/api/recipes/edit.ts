@@ -32,9 +32,11 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
         notes,
       },
     });
-    res.status(200).json({ message: 'messaggge', id: recipe.id });
+    res
+      .status(200)
+      .json({ message: 'Recipe updated successfully', id: recipe.id });
   } else {
-    res.status(403).json({ message: 'Unathorised to perform this action' });
+    res.status(403).json({ message: 'Unauthorised to perform this action' });
   }
 }
 

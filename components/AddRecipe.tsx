@@ -60,6 +60,7 @@ export default function AddRecipe({ user }: AddRecipeProps) {
                 name="course"
                 id="course"
                 className="px-4 text-lakersGold bg-lakersPurple py-2"
+                defaultValue=""
               >
                 <option value="" disabled>
                   Choose a Course

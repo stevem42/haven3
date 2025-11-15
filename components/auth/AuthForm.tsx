@@ -36,7 +36,7 @@ export default function AuthForm() {
     const enteredPassword = passwordInputRef.current?.value;
 
     if (!enteredEmail || !enteredPassword) {
-      alert('Emal and Password are required');
+      alert('Email and Password are required');
       return;
     }
 

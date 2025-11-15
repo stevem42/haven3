@@ -44,7 +44,6 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     } else {
       return user;
     }
-    res.status(201).json({ message: 'Created new user' });
   }
 }
 

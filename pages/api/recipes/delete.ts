@@ -24,8 +24,8 @@ export default async function handler(
       },
     });
 
-    res.status(200).json({ message: 'DELETED IT' });
+    res.status(200).json({ message: 'Recipe has been deleted' });
   } else {
-    res.status(403).json({ message: 'Unathorised to perform this action' });
+    res.status(403).json({ message: 'Unauthorised to perform this action' });
   }
 }
