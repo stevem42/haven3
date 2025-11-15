@@ -3,12 +3,17 @@ import Link from 'next/link';
 import { MouseEventHandler, useEffect, useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 
+// Create a serialized version of recipe where Date objects are strings
+type SerializedRecipe = Omit<recipe, 'date_posted'> & {
+  date_posted: string;
+};
+
 interface SeachProps {
-  recipes: recipe[];
+  recipes: SerializedRecipe[];
 }
 
 export const Search = ({ recipes }: SeachProps) => {
-  const [filtered, setFiltered] = useState(recipes);
+  const [filtered, setFiltered] = useState<SerializedRecipe[]>(recipes);
   const [selectedCourse, setSelectedCourse] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -42,7 +47,7 @@ export const Search = ({ recipes }: SeachProps) => {
   }
 
   function handleFilter() {
-    let filteredHandle: recipe[] = [];
+    let filteredHandle: SerializedRecipe[] = [];
     if (selectedCourse && searchTerm) {
       filteredHandle = recipes.filter((recipe) => {
         return (

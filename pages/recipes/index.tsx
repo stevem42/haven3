@@ -4,8 +4,13 @@ import { GetStaticProps, NextPage } from 'next';
 import { recipe } from '@prisma/client';
 import Link from 'next/link';
 
+// Create a serialized version of recipe where Date objects are strings
+type SerializedRecipe = Omit<recipe, 'date_posted'> & {
+  date_posted: string;
+};
+
 interface AllRecipesProps {
-  recipes: recipe[] | undefined;
+  recipes: SerializedRecipe[] | undefined;
 }
 
 const allRecipes: NextPage<AllRecipesProps> = ({ recipes }) => {
@@ -35,9 +40,16 @@ const allRecipes: NextPage<AllRecipesProps> = ({ recipes }) => {
 export const getStaticProps: GetStaticProps = async () => {
   const recipes = await getAllRecipes();
 
+  // Serialize Date objects in all recipes
+  const serializedRecipes: SerializedRecipe[] =
+    recipes?.map((recipe: recipe) => ({
+      ...recipe,
+      date_posted: recipe.date_posted.toISOString(),
+    })) ?? [];
+
   return {
     props: {
-      recipes: recipes,
+      recipes: serializedRecipes,
     },
     revalidate: 1,
   };
