@@ -5,8 +5,13 @@ import { getSomeRecipes } from '../lib/dbUtil';
 import Link from 'next/link';
 import { recipe } from '@prisma/client';
 
+// Create a serialized version of recipe where Date objects are strings
+type SerializedRecipe = Omit<recipe, 'date_posted'> & {
+  date_posted: string;
+};
+
 interface HomePageProps {
-  recipes: recipe[] | undefined;
+  recipes: SerializedRecipe[] | undefined;
 }
 
 export default function Home({ recipes }: HomePageProps) {
@@ -61,9 +66,17 @@ export default function Home({ recipes }: HomePageProps) {
 
 export async function getStaticProps() {
   const recipes = await getSomeRecipes();
+
+  // Serialize Date objects in all recipes
+  const serializedRecipes: SerializedRecipe[] =
+    recipes?.map((recipe: recipe) => ({
+      ...recipe,
+      date_posted: recipe.date_posted.toISOString(),
+    })) ?? [];
+
   return {
     props: {
-      recipes: recipes,
+      recipes: serializedRecipes,
     },
     revalidate: 1,
   };
