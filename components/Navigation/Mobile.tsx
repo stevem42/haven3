@@ -13,34 +13,24 @@ const Mobile = ({ session, handleSignOut, handleNav }: MobileProps) => {
     <div>
       <ul className="list-[none] ml-4 py-2">
         <li className="block py-1 px-4 text-sm" onClick={handleNav}>
-          <Link href="/">
-            <a>Home</a>
-          </Link>
+          <Link href="/">Home</Link>
         </li>
         <li className="block py-1 px-4 text-sm" onClick={handleNav}>
-          <Link href="/recipes">
-            <a>All Recipes</a>
-          </Link>
+          <Link href="/recipes">All Recipes</Link>
         </li>
         {session && (
           <li className="block py-1 px-4 text-sm" onClick={handleNav}>
-            <Link href="/recipes/add">
-              <a>New Recipe</a>
-            </Link>
+            <Link href="/recipes/add">New Recipe</Link>
           </li>
         )}
 
         {!session ? (
           <div>
             <li className="block py-1 px-4 text-sm" onClick={handleNav}>
-              <Link href="/login">
-                <a>Login</a>
-              </Link>
+              <Link href="/login">Login</Link>
             </li>
             <li className="block py-1 px-4 text-sm" onClick={handleNav}>
-              <Link href="/register">
-                <a>Register</a>
-              </Link>
+              <Link href="/register">Register</Link>
             </li>
           </div>
         ) : (

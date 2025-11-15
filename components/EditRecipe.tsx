@@ -76,7 +76,7 @@ export default function EditRecipe({ recipe }: EditRecipeProps) {
               <option value="breakfast">Breakfast</option>
               <option value="lunch">Lunch</option>
               <option value="dinner">Dinner</option>
-              <option value="drinks">Drinks</option>
+              <option value="cocktails">Cocktails</option>
               <option value="snacks">Snacks</option>
             </select>
           </div>

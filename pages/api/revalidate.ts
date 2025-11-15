@@ -11,6 +11,7 @@ export default async function handler(
 
   try {
     await res.revalidate(`/recipes/${id}`);
+    console.log(res);
     return res.json({ revalidated: true });
   } catch (error) {
     return res.status(500).send('Error Revalidating');
